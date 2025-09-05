@@ -5,7 +5,7 @@ LIBS = -lmodbus
 TARGET = modbus_poller
 SOURCES = modbus-connect.c
 
-WRITE_TARGET = modbus_write_register
+WRITE_TARGET = ../utils/modbus_write_register
 WRITE_SOURCES = modbus_write_rtu.c
 
 poll: $(TARGET)
