@@ -24,6 +24,8 @@ write: $(WRITE_SOURCES)
 write32: $(WRITE_SOURCES)
 	$(CC) $(CFLAGS) -o $(WRITE_TARGET32) $(WRITE_SOURCES32) $(LIBS)
 
+uint_to_hex: uint32_to_hex.c
+	gcc -o ../utils/uint32_to_hex uint32_to_hex.c 
 
 
 clean:
