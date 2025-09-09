@@ -24,7 +24,11 @@ write: $(WRITE_SOURCES)
 write32: $(WRITE_SOURCES)
 	$(CC) $(CFLAGS) -o $(WRITE_TARGET32) $(WRITE_SOURCES32) $(LIBS)
 
+write_time: modbus_write_time.c
+	gcc -o ../utils/modbus_write_time modbus_write_time.c $(LIBS) 
 
+int2hex: int2hex.c
+	gcc -o ../utils/int2hex int2hex.c
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
