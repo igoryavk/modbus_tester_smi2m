@@ -24,7 +24,8 @@ write: $(WRITE_SOURCES)
 write32: $(WRITE_SOURCES)
 	$(CC) $(CFLAGS) -o $(WRITE_TARGET32) $(WRITE_SOURCES32) $(LIBS)
 
-
+string_test: modbus_string_test.c
+	gcc -o ../utils/modbus_string_test modbus_string_test.c $(LIBS)
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
