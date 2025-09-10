@@ -57,11 +57,10 @@ void test_basic_strings(modbus_t *modbus_context)
     const char* strings[]={
         "Hello world",
         "Текст на русском",
-        "1234567890",
-        NULL
+        "1234567890"
     };
 
-    for (int i=0;strings[i]!=NULL;i++)
+    for (int i=0;i<3;i++)
     {
         send_string(modbus_context,strings[i]);
     }
@@ -73,14 +72,14 @@ void test_basic_strings(modbus_t *modbus_context)
 
 int main(int argc,char** argv)
 {
-    const char* port="/dev/ttyUSB0";
+    const char* port="/dev/ttyUSB1";
     int baud = 115200;
     int slave_id = 1;
 
 
     printf("\033[32m\nТест отправки  строк на Modbus индикатор Овен СМИ2-М\033[0m\n");
 
-    modbus_t  *modbus= modbus_new_rtu(port,baud,'N',1,1);
+    modbus_t  *modbus= modbus_new_rtu(port,baud,'N',8,1);
 
     if (modbus==NULL){
         fprintf(stderr,"Не удалось создать контекст Модбас устройства: %s \n", modbus_strerror(errno));
@@ -99,7 +98,20 @@ int main(int argc,char** argv)
 
     printf("\033[32mПодключение к СМИ2-М установлено \033[0m\n");
 
-    test_basic_strings(modbus);
+    //test_basic_strings(modbus);
+    char symbol1='a';
+    u_int16_t wr_reg=(u_int16_t)symbol1;
+
+    printf("Регистр для записи: %08X\n",wr_reg);
+    u_int16_t reg;
+    
+    if (modbus_write_register(modbus,4209,wr_reg)!=1)
+    {
+        fprintf(stderr,"Ошибка записи регистра: %s \n",modbus_strerror(errno));
+    }
+    modbus_read_registers(modbus,4208,1,&reg);
+
+    printf("Прочитанный регистр: 0x%08X\n",reg);
 
     modbus_close(modbus);
     modbus_free(modbus);
