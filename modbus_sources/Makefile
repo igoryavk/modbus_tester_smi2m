@@ -27,6 +27,15 @@ write32: $(WRITE_SOURCES)
 string_test: modbus_string_test.c
 	gcc -o ../utils/modbus_string_test modbus_string_test.c $(LIBS)
 
+change_vartype: modbus_change_vartype.c 
+	gcc -o ../utils/modbus_change_vartype modbus_change_vartype.c $(LIBS)
+
+modbus_diag: modbus_diag.c
+	gcc -o ../utils/modbus_diag modbus_diag.c $(LIBS)
+	
+send_a: modbus_send_a.c
+	gcc -o ../utils/modbus_send_a modbus_send_a.c $(LIBS)
+
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
 
