@@ -33,8 +33,8 @@ change_vartype: modbus_change_vartype.c
 modbus_diag: modbus_diag.c
 	gcc -o ../utils/modbus_diag modbus_diag.c $(LIBS)
 	
-send_a: modbus_send_a.c
-	gcc -o ../utils/modbus_send_a modbus_send_a.c $(LIBS)
+send_letter: modbus_send_letter.c
+	gcc -o ../utils/modbus_send_letter modbus_send_letter.c $(LIBS)
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)

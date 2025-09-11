@@ -15,11 +15,11 @@
 #define STRING_DATA_START 4208         // Начало данных строки
 #define STRING_LENGTH_REGISTER 4249    // Длина строки (возможно read-only)
 
-int main() {
+int main(int argc, char** argv) {
     const char *port = "/dev/ttyUSB0";
     int baud = 115200;
     int slave_id = 1;
-    const char *letter = "A";
+    const char *letter = "a";
     char parity = 'N';
     int data_bits = 8;
     int stop_bits = 1;
@@ -31,6 +31,15 @@ int main() {
     printf("📟 Адрес устройства: %d\n", slave_id);
     printf("-----------------------------------------\n");
 
+    if (argc!=2)
+    {
+        printf("\033[31mВведите пожалуйста букву\033[0m\n");
+        return 1;
+    }
+    else
+    {
+        letter=argv[1];
+    }
     // 1. Создаем Modbus контекст
     modbus_t *ctx = modbus_new_rtu(port, baud, parity, data_bits, stop_bits);
     if (ctx == NULL) {
