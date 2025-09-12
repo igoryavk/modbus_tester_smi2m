@@ -30,6 +30,18 @@ write_time: modbus_write_time.c
 int2hex: int2hex.c
 	gcc -o ../utils/int2hex int2hex.c
 
+string_test: modbus_string_test.c
+	gcc -o ../utils/modbus_string_test modbus_string_test.c $(LIBS)
+
+change_vartype: modbus_change_vartype.c 
+	gcc -o ../utils/modbus_change_vartype modbus_change_vartype.c $(LIBS)
+
+modbus_diag: modbus_diag.c
+	gcc -o ../utils/modbus_diag modbus_diag.c $(LIBS)
+	
+send_letter: modbus_send_letter.c
+	gcc -o ../utils/modbus_send_letter modbus_send_letter.c $(LIBS)
+
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
 
