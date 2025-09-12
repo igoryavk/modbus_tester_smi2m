@@ -39,11 +39,15 @@ send_string: modbus_send_string.c
 change_vartype: modbus_change_vartype.c 
 	gcc -o ../utils/modbus_change_vartype modbus_change_vartype.c $(LIBS)
 
+change_color: modbus_change_color.c
+	gcc -o ../utils/modbus_change_color modbus_change_color.c $(LIBS)
+
 modbus_diag: modbus_diag.c
 	gcc -o ../utils/modbus_diag modbus_diag.c $(LIBS)
 	
 send_letter: modbus_send_letter.c
 	gcc -o ../utils/modbus_send_letter modbus_send_letter.c $(LIBS)
+
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
