@@ -36,6 +36,9 @@ modbus_diag: modbus_diag.c
 send_a: modbus_send_a.c
 	gcc -o ../utils/modbus_send_a modbus_send_a.c $(LIBS)
 
+set_blinking: modbus_set_blinking.c
+	gcc -o ../utils/modbus_set_blinking modbus_set_blinking.c $(LIBS)
+
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
 

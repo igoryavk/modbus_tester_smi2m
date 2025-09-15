@@ -19,7 +19,7 @@ int main() {
     const char *port = "/dev/ttyUSB0";
     int baud = 115200;
     int slave_id = 1;
-    const char *letter = "A";
+    const char *letter = "ABCD";
     char parity = 'N';
     int data_bits = 8;
     int stop_bits = 1;
@@ -69,8 +69,8 @@ int main() {
     
     // Подготавливаем данные: 'A' + нулевой терминатор
     uint16_t string_data[2] = {0};
-    string_data[0] = (uint16_t)letter[0];  // 'A'
-    string_data[1] = 0x0000;               // Нулевой терминатор
+    string_data[0] = (uint16_t)(letter[0]|letter[1]<<8);  // 'A'
+    string_data[1] = (uint16_t)(letter[1]|letter[2]<<8);               // Нулевой терминатор
 
     printf("   Данные: 0x%04X 0x%04X\n", string_data[0], string_data[1]);
     printf("   Адрес: %d\n", STRING_DATA_START);
