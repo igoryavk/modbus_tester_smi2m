@@ -53,6 +53,10 @@ speed_setup: ./SpeedTest/modbus_speed_setup.c
 speed_test: ./SpeedTest/modbus_speed_test.c
 	gcc -o ../utils/modbus_speed_test ./SpeedTest/modbus_speed_test.c $(LIBS)
 
+save_speed: ./SpeedTest/modbus_save_speed.c
+	gcc -o ../utils/modbus_save_speed ./SpeedTest/modbus_save_speed.c $(LIBS)
+
+
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
 

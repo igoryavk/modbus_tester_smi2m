@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define STATUS_REGISTER 4100
+#define STATUS_REGISTER 521
 
 int main(int argc, char **argv)
 {
@@ -58,7 +58,35 @@ int main(int argc, char **argv)
         return -1;
     }
     
-    printf("Регистр успешно прочитан : 0x%04X\n",status);
+    printf("Регистр cкорости успешно прочитан:\n");
+
+    switch (status)
+    {
+    case 0x03:
+        printf("\033[32mУстановлена скорость 2400\033[0m\n");
+        break;
+    case 0x04:
+        printf("\033[32mУстановлена скорость 4800\033[0m\n");
+        break;
+    case 0x05:
+        printf("\033[32mУстановлена скорость 9600\033[0m\n");
+        break;
+    case 0x06:
+        printf("\033[32mУстановлена скорость 14400\033[0m\n");
+        break;
+    case 0x07:
+        printf("\033[32mУстановлена скорость 19200\033[0m\n");
+        break;
+    case 0x08:
+        printf("\033[32mУстановлена скорость 38400\033[0m\n");
+        break;
+    case 0x09:
+        printf("\033[32mУстановлена скорость 57600\033[0m\n");
+        break;    
+    case 0x0A:
+        printf("\033[32mУстановлена скорость 115200\033[0m\n");
+        break;
+    }
 
     modbus_close(modbus);
     modbus_free(modbus);
