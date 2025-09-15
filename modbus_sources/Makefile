@@ -47,7 +47,11 @@ modbus_diag: modbus_diag.c
 	
 send_letter: modbus_send_letter.c
 	gcc -o ../utils/modbus_send_letter modbus_send_letter.c $(LIBS)
+speed_setup: ./SpeedTest/modbus_speed_setup.c
+	gcc -o ../utils/modbus_speed_setup ./SpeedTest/modbus_speed_setup.c $(LIBS)
 
+speed_test: ./SpeedTest/modbus_speed_test.c
+	gcc -o ../utils/modbus_speed_test ./SpeedTest/modbus_speed_test.c $(LIBS)
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
