@@ -48,6 +48,8 @@ modbus_diag: modbus_diag.c
 send_letter: modbus_send_letter.c
 	gcc -o ../utils/modbus_send_letter modbus_send_letter.c $(LIBS)
 
+modbus_slave: ./ModbusMasterTest/modbus_slave.c
+	gcc -o ../utils/modbus_slave ./ModbusMasterTest/modbus_slave.c $(LIBS)
 
 clean:
 	rm -f $(TARGET) $(WRITE_SOURCES) $(WRITE_SOURCES32)
